@@ -1,9 +1,23 @@
+import {Cliente} from './Cliente.js'
 export class ContaCorrente {
   agencia;
-  cliente;
+  _cliente;
+
+
+  set cliente(novoValor){
+    if(novoValor instanceof Cliente){//se meu novo valor for uma isntancia de cliente se sim faça a atribuição se não não faça nada para não atribuir um valor errado
+       this._cliente = novoValor;
+    }
+   
+  }
+  get cliente(){ 
+    return this._cliente;
+  }
 
   _saldo = 0;
-
+ get saldo(){ //get é um acessor publico
+ this._saldo;
+ }
   sacar(valor){//é uma operação com valor
    if(this._saldo >= valor){
      this._saldo -= valor
